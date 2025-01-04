@@ -6,8 +6,8 @@
 
 1. Клонируйте репозиторий:
     ```bash
-    git clone https://github.com/ваш_пользователь/текст-в-бинарный-код.git
-    cd текст-в-бинарный-код
+    git clone https://github.com/mrkirill046/text-to-binary.git
+    cd text-to-binary
     ```
 
 2. Соберите проект с помощью Cargo:
