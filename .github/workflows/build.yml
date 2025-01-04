@@ -1,0 +1,38 @@
+name: Build and Release EXE
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Rust
+        uses: actions/setup-rust@v1
+        with:
+          rust-version: 1.81.0
+
+      - name: Build the project
+        run: |
+          cargo build --release
+
+      - name: Create Release EXE
+        run: |
+          mkdir -p release
+          copy target\release\your_project_name.exe release\your_project_name.exe
+
+      - name: Upload EXE to GitHub Release
+        uses: ghoneycutt/action-create-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: "Release ${{ github.ref }}"
+          body: "Сборка проекта ${{ github.ref }} завершена"
+          files: release/your_project_name.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
