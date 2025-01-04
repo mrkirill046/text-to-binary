@@ -14,7 +14,8 @@ fn main() {
 
     let binary = input
         .chars()
-        .map(|c| format!("{:08b}", c as u8))
+        .flat_map(|c| c.to_string().into_bytes())
+        .map(|b| format!("{:08b}", b))
         .collect::<Vec<String>>()
         .join(" ");
 
