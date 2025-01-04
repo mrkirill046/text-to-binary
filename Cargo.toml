@@ -1,0 +1,7 @@
+[package]
+name = "text-to-binary"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clipboard = "0.5"
